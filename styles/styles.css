@@ -1,0 +1,56 @@
+/* navbar */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #EDEDED;
+  height: 50%;
+}
+.navbar {
+  background-color: #EDEDED;
+  overflow: hidden;
+  font-size: 20px;
+  padding-top: 5px;
+}
+
+p{
+  font-size: 20px;
+}
+
+.navbar a {
+  float: left;
+  color: black;
+  text-align: left;
+  padding: 14px 16px;
+  margin: 0;
+  text-decoration: none;
+  font-size: 20;
+}
+
+.navbar a.active {
+  text-decoration: underline;
+}
+
+.navbar a:hover {
+  font-style: italic;
+}
+
+/* picture section */
+
+.spawn_div {
+  background-color: grey;
+}
+
+/* admin page  */
+
+.admin {
+  margin-top: 15%;
+  text-align: center;
+}
+
+/* create page  */
+
+.create .upload {
+  text-align: center;
+  margin-top: 15%;
+}
