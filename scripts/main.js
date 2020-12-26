@@ -35,7 +35,6 @@ document.onkeydown = function(e) {
   }
 };
 
-
 function spawnImage(picNumber) { // shows next image
   console.log("Spawning image: " + picNumber);
   // creates random numbers for positioning of the image within the parent div.
