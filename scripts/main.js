@@ -1,16 +1,16 @@
 const el = document.querySelector("#pic_container");
 
-//var scrollCount = 1; // delete this
-var picCount = 1;
-var lastSpawned;
+
+var picCount = 1; // number for selecting the right picture file, as all pictures are named x.jpg
+var lastSpawned; // for finding the id of the last picture shown, used for removing or blurring.
 
 // event-listeners:
 
-function callToSpawn(){
+function callToSpawn() {
   spawnImage(picCount);
 }
 
-function callToRemove(){
+function callToRemove() {
   removeImage(lastSpawned);
 }
 
@@ -19,20 +19,20 @@ document.getElementById("pic_container").addEventListener('click', callToSpawn);
 
 // control feed with arrow-keys
 document.onkeydown = function(e) {
-    switch (e.keyCode) {
-        case 37:
-            callToRemove();
-            break;
-        case 38:
-            callToRemove();
-            break;
-        case 39:
-            callToSpawn();
-            break;
-        case 40:
-            callToSpawn();
-            break;
-    }
+  switch (e.keyCode) {
+    case 37:
+      callToRemove();
+      break;
+    case 38:
+      callToRemove();
+      break;
+    case 39:
+      callToSpawn();
+      break;
+    case 40:
+      callToSpawn();
+      break;
+  }
 };
 
 
@@ -58,37 +58,34 @@ function spawnImage(picNumber) { // shows next image
   console.log(picCount);
 }
 
-function removeImage(picNumber) {
+function removeImage(picNumber) { // hides image currently in focus
   var src = document.querySelector("#pic_container");
-  var ele = document.getElementById(String("picnr" + (lastSpawned+1)));
+  var ele = document.getElementById(String("picnr" + (lastSpawned + 1)));
   try {
-      src.removeChild(ele);
-      lastSpawned--;
-      picCount--;
-      console.log("Removing image " + ele)
-      unblurWhenRemove();
-  }
-  catch {
+    src.removeChild(ele);
+    lastSpawned--;
+    picCount--;
+    console.log("Removing image " + ele)
+    unblurWhenRemove();
+  } catch {
     console.log("No image to remove");
   }
 }
 
-function blurlast(){
+function blurlast() { // blurs images behind the one in focus
   var ele = document.getElementById(String("picnr" + lastSpawned));
   try {
-        ele.style.filter = "blur(0px) grayscale(100)";
-  }
- catch {
+    ele.style.filter = "blur(0px) grayscale(100)";
+  } catch {
     console.log("No image to blur.");
   }
 }
 
-function unblurWhenRemove(){
+function unblurWhenRemove() { // removes blur-effects when image is in focus
   var ele = document.getElementById(String("picnr" + (lastSpawned + 1)));
   try {
-        ele.style.filter = "blur(0px) grayscale(0)";
-  }
- catch {
+    ele.style.filter = "blur(0px) grayscale(0)";
+  } catch {
     console.log("No image to unblur.");
   }
 }

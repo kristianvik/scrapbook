@@ -16,6 +16,9 @@ body {
   padding-top: 5px;
 }
 
+.adminButton {
+  visibility: hidden;
+}
 p{
   font-size: 20px;
 }
