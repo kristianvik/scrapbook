@@ -1,11 +1,14 @@
-/* navbar */
-
 body {
   margin: 0;
   padding: 0;
   background-color: #EDEDED;
-  height: 50%;
+  height: 100%;
+  widht: 100%;
 }
+
+
+/* navbar */
+
 .navbar {
   background-color: #EDEDED;
   overflow: hidden;
@@ -37,8 +40,19 @@ p{
 
 /* picture section */
 
-.spawn_div {
-  background-color: grey;
+#pic_container {
+  padding: 0% 5%;
+  flex: 1;
+  position: absolute;
+  width: 90%;
+  height: 90%;
+}
+
+.innerimage {
+  widht: 100%;
+  max-width: 35%;
+  max-height: 50%;
+  position: fixed;
 }
 
 /* admin page  */
