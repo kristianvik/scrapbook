@@ -3,7 +3,7 @@ body {
   padding: 0;
   background-color: #EDEDED;
   height: 100%;
-  widht: 100%;
+  width: 100%;
 }
 
 
@@ -19,8 +19,14 @@ body {
 .adminButton {
   visibility: hidden;
 }
+
 p{
   font-size: 20px;
+}
+
+#txAddPics {
+  font-size: 20px;
+  font-style: italic;
 }
 
 .navbar a {
@@ -52,10 +58,14 @@ p{
 }
 
 .innerimage {
-  widht: 100%;
   max-width: 35%;
   max-height: 50%;
   position: fixed;
+}
+
+#instructions {
+  text-align: center;
+  font-style: italic;
 }
 
 /* admin page  */
@@ -70,4 +80,42 @@ p{
 .create .upload {
   text-align: center;
   margin-top: 15%;
+}
+
+/* mobile device changes */
+
+@media only screen and (max-width: 900px) {
+  .innerimage {
+    max-width: 80%;
+    max-ehgith: 80%;
+    position: fixed;
+  }
+
+  .navbar {
+    background-color: #EDEDED;
+    overflow: hidden;
+    font-size: 50px;
+    padding-top: 5px;
+  }
+
+  .navbar a {
+    float: left;
+    color: black;
+    text-align: left;
+    padding: 14px 35px;
+    margin: 0;
+    text-decoration: none;
+  }
+
+  #instructions {
+    font-style: italic;
+    text-align: center;
+    font-size: 50px;
+  }
+
+  #txAddPics {
+    font-size: 35px;
+    font-style: italic;
+  }
+
 }

@@ -3,8 +3,9 @@ const el = document.querySelector("#pic_container");
 
 var picCount = 1; // number for selecting the right picture file, as all pictures are named x.jpg
 var lastSpawned; // for finding the id of the last picture shown, used for removing or blurring.
+var scrollCount;
 
-// event-listeners:
+controlsHelp(); // spawns information about controls
 
 function callToSpawn() {
   spawnImage(picCount);
@@ -14,8 +15,24 @@ function callToRemove() {
   removeImage(lastSpawned);
 }
 
+// Checks if screen has width of less than 700px, which would mean user is on mobile device
+var screenWidth = window.matchMedia("(max-width: 900px)")
+screenWidth.addListener(mobileChanges());
+
+// does nescessary changes for mobile screen-dimensions
+function mobileChanges() {
+  if(screenWidth.matches) {
+    console.log("ScreenWidth is mobile");
+    try{
+        document.getComputedStyle(".innerimage").style.width = "50%";
+    }catch(e){console.log(e);}
+  }
+}
+
 // Event-listeners for showing new image
 document.getElementById("pic_container").addEventListener('click', callToSpawn);
+
+// scrolling event
 
 // control feed with arrow-keys
 document.onkeydown = function(e) {
@@ -33,15 +50,40 @@ document.onkeydown = function(e) {
       callToSpawn();
       break;
   }
-};
+}
 
-function spawnImage(picNumber) { // shows next image
-  console.log("Spawning image: " + picNumber);
+// event-listeners for scrolling on laptop/pc
+
+// displays the controls for using the site when no image is showing
+function controlsHelp() {
+  if (picCount <= 1){
+      document.getElementById("pic_container").innerHTML = '<p id="instructions">scroll or use the arrow keys to show and hide images</p>';
+      document.getElementById("instructions").style.margin = "15% 0%";
+  }
+  else {
+    document.getElementById("instructions").innerHTML = "";
+    document.getElementById("instructions").style.margin = "0%";
+  }
+}
+
+
+// shows next image
+function spawnImage(picNumber) {
   // creates random numbers for positioning of the image within the parent div.
-  var randomML = (Math.random() * 58);
-  var randomMR = (Math.random() * 58);
-  var randomMT = (Math.random() * 25);
-  var randomMB = (Math.random() * 58);
+
+  if (screenWidth.matches) { // if on mobile
+    var randomMT = (Math.random() * 60); // pictures spawns all the way down the screen and not only at the top
+    var randomML = (Math.random() * 10);
+    var randomMR = (Math.random() * 10);
+    var randomMB = (Math.random() * 10);
+  }
+  else {
+    var randomMT = (Math.random() * 25);
+    var randomML = (Math.random() * 58);
+    var randomMR = (Math.random() * 58);
+    var randomMB = (Math.random() * 58);
+  }
+
 
   var img = document.createElement("img");
   img.src = "images/" + picNumber + ".jpg";
@@ -54,37 +96,44 @@ function spawnImage(picNumber) { // shows next image
   lastSpawned = (picNumber - 1); //adds last picture to lastSpawned variable for blurring or removing.
   blurlast();
   picCount++;
-  console.log(picCount);
+  controlsHelp();
+  mobileChanges();
 }
 
-function removeImage(picNumber) { // hides image currently in focus
+// hides image currently in focus
+function removeImage(picNumber) {
   var src = document.querySelector("#pic_container");
   var ele = document.getElementById(String("picnr" + (lastSpawned + 1)));
   try {
     src.removeChild(ele);
     lastSpawned--;
     picCount--;
-    console.log("Removing image " + ele)
     unblurWhenRemove();
-  } catch {
-    console.log("No image to remove");
+    controlsHelp();
+  }
+  catch(error) {
+      return;
   }
 }
 
-function blurlast() { // blurs images behind the one in focus
+// blurs images behind the one in focus
+function blurlast() {
   var ele = document.getElementById(String("picnr" + lastSpawned));
   try {
     ele.style.filter = "blur(0px) grayscale(100)";
-  } catch {
-    console.log("No image to blur.");
+  }
+  catch(error) {
+    return;
   }
 }
 
-function unblurWhenRemove() { // removes blur-effects when image is in focus
+ // removes blur-effects when image is in focus
+function unblurWhenRemove() {
   var ele = document.getElementById(String("picnr" + (lastSpawned + 1)));
   try {
     ele.style.filter = "blur(0px) grayscale(0)";
-  } catch {
-    console.log("No image to unblur.");
+  }
+  catch(error) {
+    return;
   }
 }
