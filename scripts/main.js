@@ -84,7 +84,6 @@ function spawnImage(picNumber) {
     var randomMB = (Math.random() * 58);
   }
 
-
   var img = document.createElement("img");
   img.src = "images/" + picNumber + ".jpg";
   var src = document.querySelector("#pic_container");
