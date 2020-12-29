@@ -15,7 +15,7 @@ function callToRemove() {
   removeImage(lastSpawned);
 }
 
-// Checks if screen has width of less than 700px, which would mean user is on mobile device
+// checks if screen has width of less than 900px, which would mean user is on mobile device
 var screenWidth = window.matchMedia("(max-width: 900px)")
 screenWidth.addListener(mobileChanges());
 
@@ -29,7 +29,7 @@ function mobileChanges() {
   }
 }
 
-// Event-listeners for showing new image
+// event-listeners for showing new image
 document.getElementById("pic_container").addEventListener('click', callToSpawn);
 
 // scrolling event
