@@ -12,7 +12,7 @@ $(document).ready(function() {
   // makes nescessary changes for mobile screen-dimensions
   function mobileChanges() {
     if (screenWidth.matches) {
-      $(".innerimage").css("max-width", "75%");
+      $('.innerimage').css("max-width", "75%");
     }
   }
 
@@ -34,15 +34,18 @@ $(document).ready(function() {
     }
   }
 
+  $('#pic_container').touchmove(function() {
+    spawnImage(picCount);
+  })
+
   // displays the controls for using the site when no image is showing
   function controlsHelp() {
     if (picCount <= 1) {
-      $("#pic_container").html('<p id="instructions">use the arrow keys to show and hide images</p>');
-      $("#instructions").css("margin", "15% 0%");
+      $('#pic_container').html('<p id="instructions">use the arrow keys to show and hide images</p>');
+      $('#instructions').css("margin", "15% 0%");
     } else {
-      $("#instructions").html('');
-      $("#instructions").css("margin", "0%");
-      document.getElementById("instructions").style.margin = "0%";
+      $('#instructions').html('');
+      $('#instructions').css("margin", "0%");
     }
   }
 
@@ -67,10 +70,13 @@ $(document).ready(function() {
     img.attr('src', String("images/" + picNumber + ".jpg"));
     img.css("margin", String(randomMT + "% " + randomMR + "% " + randomMB + "% " + randomML + "% "));
     img.addClass("innerimage");
-    img.appendTo("#pic_container").hide().fadeIn(200);
+    img.appendTo('#pic_container').hide().fadeIn(200);
 
-    $(String("#picnr" + picNumber)).draggable(); // makes picture dragable
-    
+    if (!screenWidth.matches) {
+      $(String("#picnr" + picNumber)).draggable(); // makes picture dragable
+    }
+
+
     lastSpawned = (picNumber - 1); //adds last picture to lastSpawned variable for blurring or removing.
 
     $(String("#picnr" + lastSpawned)).css("filter", "grayscale(100)"); // blurs image below this image
