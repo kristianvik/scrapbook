@@ -16,23 +16,15 @@ function callToRemove() {
 }
 
 // checks if screen has width of less than 900px, which would mean user is on mobile device
-var screenWidth = window.matchMedia("(max-width: 900px)")
+var screenWidth = window.matchMedia("(max-width: 900px)");
 screenWidth.addListener(mobileChanges());
 
 // does nescessary changes for mobile screen-dimensions
 function mobileChanges() {
-  if(screenWidth.matches) {
-    console.log("ScreenWidth is mobile");
-    try{
-        document.getComputedStyle(".innerimage").style.width = "50%";
-    }catch(e){console.log(e);}
+  if (screenWidth.matches) {
+    $(".innerimage").css("max-width", "75%");
   }
 }
-
-// event-listeners for showing new image
-document.getElementById("pic_container").addEventListener('click', callToSpawn);
-
-// scrolling event
 
 // control feed with arrow-keys
 document.onkeydown = function(e) {
@@ -56,12 +48,12 @@ document.onkeydown = function(e) {
 
 // displays the controls for using the site when no image is showing
 function controlsHelp() {
-  if (picCount <= 1){
-      document.getElementById("pic_container").innerHTML = '<p id="instructions">scroll or use the arrow keys to show and hide images</p>';
-      document.getElementById("instructions").style.margin = "15% 0%";
-  }
-  else {
-    document.getElementById("instructions").innerHTML = "";
+  if (picCount <= 1) {
+    $("#pic_container").html('<p id="instructions">scroll or use the arrow keys to show and hide images</p>');
+    $("#instructions").css("margin", "15% 0%");
+  } else {
+    $("#instructions").html('');
+    $("#instructions").css("margin", "0%");
     document.getElementById("instructions").style.margin = "0%";
   }
 }
@@ -76,22 +68,20 @@ function spawnImage(picNumber) {
     var randomML = (Math.random() * 10);
     var randomMR = (Math.random() * 10);
     var randomMB = (Math.random() * 10);
-  }
-  else {
+  } else {
     var randomMT = (Math.random() * 25);
     var randomML = (Math.random() * 58);
     var randomMR = (Math.random() * 58);
     var randomMB = (Math.random() * 58);
   }
 
-  var img = document.createElement("img");
-  img.src = "images/" + picNumber + ".jpg";
-  var src = document.querySelector("#pic_container");
+  // creates image
+  var img = $(String("<img id=" + "picnr" + picNumber + ">"));
+  img.attr('src', String("images/" + picNumber + ".jpg"));
+  img.css("margin", String(randomMT + "% " + randomMR + "% " + randomMB + "% " + randomML + "% "));
+  img.addClass("innerimage");
+  img.appendTo("#pic_container");
 
-  img.style.margin = String(randomMT + "% " + randomMR + "% " + randomMB + "% " + randomML + "% ");
-  img.classList.add("innerimage");
-  img.id = String("picnr" + picNumber);
-  src.appendChild(img);
   lastSpawned = (picNumber - 1); //adds last picture to lastSpawned variable for blurring or removing.
   blurlast();
   picCount++;
@@ -101,38 +91,23 @@ function spawnImage(picNumber) {
 
 // hides image currently in focus
 function removeImage(picNumber) {
-  var src = document.querySelector("#pic_container");
-  var ele = document.getElementById(String("picnr" + (lastSpawned + 1)));
-  try {
-    src.removeChild(ele);
-    lastSpawned--;
+  $(String("#picnr" + (lastSpawned + 1))).remove();
+
+  if (picCount > 1) { // prevents picCount and lastSpawned values from going below 0.
     picCount--;
-    unblurWhenRemove();
-    controlsHelp();
+    lastSpawned--;
   }
-  catch(error) {
-      return;
-  }
+
+  unblurWhenRemove();
+  controlsHelp(); // spawns information about controls
 }
 
 // blurs images behind the one in focus
 function blurlast() {
-  var ele = document.getElementById(String("picnr" + lastSpawned));
-  try {
-    ele.style.filter = "blur(0px) grayscale(100)";
-  }
-  catch(error) {
-    return;
-  }
+  $(String("#picnr" + lastSpawned)).css("filter", "grayscale(100)");
 }
 
- // removes blur-effects when image is in focus
+// removes blur-effects when image is in focus
 function unblurWhenRemove() {
-  var ele = document.getElementById(String("picnr" + (lastSpawned + 1)));
-  try {
-    ele.style.filter = "blur(0px) grayscale(0)";
-  }
-  catch(error) {
-    return;
-  }
+  $(String("#picnr" + (lastSpawned + 1))).css("filter", "grayscale(0)");
 }

@@ -60,7 +60,8 @@ p{
 .innerimage {
   max-width: 35%;
   max-height: 50%;
-  position: fixed;
+  position: absolute;
+  cursor: move;
 }
 
 #instructions {

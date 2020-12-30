@@ -1,2 +1,2 @@
-# insposide
-Personal site for creating moodboards, or something. 
+# scrapbook
+Personal site for creating moodboards, or something.
