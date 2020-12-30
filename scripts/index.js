@@ -1,3 +1,5 @@
+//jshint esversion:6
+
 $(document).ready(function() {
 
   var picCount = 1; // number for selecting the right picture file, as all pictures are named x.jpg
@@ -32,7 +34,7 @@ $(document).ready(function() {
         spawnImage(picCount);
         break;
     }
-  }
+  };
 
 
   // displays the controls for using the site when no image is showing
@@ -51,11 +53,11 @@ $(document).ready(function() {
     // creates random numbers for positioning of the image within the parent div.
 
     if (screenWidth.matches) { // if on mobile
-      var randomT = (Math.random() * 60); // pictures spawns all the way down the screen and not only at the top
-      var randomL = (Math.random() * 10);
+      let randomT = (Math.random() * 60); // pictures spawns all the way down the screen and not only at the top
+      let randomL = (Math.random() * 10);
     } else {
-      var randomT = (Math.random() * 25);
-      var randomL = (Math.random() * 58)
+      let randomT = (Math.random() * 25);
+      let randomL = (Math.random() * 58);
     }
 
     // creates image
