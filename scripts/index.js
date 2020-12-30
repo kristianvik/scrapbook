@@ -5,14 +5,6 @@ $(document).ready(function() {
 
   controlsHelp(); // spawns information about controls
 
-  function callToSpawn() {
-    spawnImage(picCount);
-  }
-
-  function callToRemove() {
-    removeImage(lastSpawned);
-  }
-
   // checks if screen has width of less than 900px, which would mean user is on mobile
   var screenWidth = window.matchMedia("(max-width: 900px)");
   screenWidth.addListener(mobileChanges());
@@ -28,21 +20,19 @@ $(document).ready(function() {
   document.onkeydown = function(e) {
     switch (e.keyCode) {
       case 37:
-        callToRemove();
+        removeImage(lastSpawned);
         break;
       case 38:
-        callToRemove();
+        removeImage(lastSpawned);
         break;
       case 39:
-        callToSpawn();
+        spawnImage(picCount);
         break;
       case 40:
-        callToSpawn();
+        spawnImage(picCount);
         break;
     }
   }
-
-  // event-listeners for scrolling on laptop/pc
 
   // displays the controls for using the site when no image is showing
   function controlsHelp() {
@@ -55,7 +45,6 @@ $(document).ready(function() {
       document.getElementById("instructions").style.margin = "0%";
     }
   }
-
 
   // shows next image
   function spawnImage(picNumber) {
