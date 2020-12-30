@@ -34,9 +34,6 @@ $(document).ready(function() {
     }
   }
 
-  $('#pic_container').touchmove(function() {
-    spawnImage(picCount);
-  })
 
   // displays the controls for using the site when no image is showing
   function controlsHelp() {
@@ -54,28 +51,24 @@ $(document).ready(function() {
     // creates random numbers for positioning of the image within the parent div.
 
     if (screenWidth.matches) { // if on mobile
-      var randomMT = (Math.random() * 60); // pictures spawns all the way down the screen and not only at the top
-      var randomML = (Math.random() * 10);
-      var randomMR = (Math.random() * 10);
-      var randomMB = (Math.random() * 10);
+      var randomT = (Math.random() * 60); // pictures spawns all the way down the screen and not only at the top
+      var randomL = (Math.random() * 10);
     } else {
-      var randomMT = (Math.random() * 25);
-      var randomML = (Math.random() * 58);
-      var randomMR = (Math.random() * 58);
-      var randomMB = (Math.random() * 58);
+      var randomT = (Math.random() * 25);
+      var randomL = (Math.random() * 58)
     }
 
     // creates image
     var img = $(String("<img id=" + "picnr" + picNumber + ">"));
     img.attr('src', String("images/" + picNumber + ".jpg"));
-    img.css("margin", String(randomMT + "% " + randomMR + "% " + randomMB + "% " + randomML + "% "));
+    img.css("left", String(randomL + "%"));
+    img.css("top", String(randomT + "%"));
     img.addClass("innerimage");
     img.appendTo('#pic_container').hide().fadeIn(200);
 
     if (!screenWidth.matches) {
-      $(String("#picnr" + picNumber)).draggable(); // makes picture dragable
+      $(String("#picnr" + picNumber)).draggable(); // makes picture draggable when not on mobile
     }
-
 
     lastSpawned = (picNumber - 1); //adds last picture to lastSpawned variable for blurring or removing.
 
@@ -84,7 +77,6 @@ $(document).ready(function() {
     picCount++;
     controlsHelp();
     mobileChanges();
-
   }
 
   // hides image currently in focus
@@ -100,7 +92,5 @@ $(document).ready(function() {
     $(String("#picnr" + (lastSpawned + 1))).css("filter", "grayscale(0)"); // unblurs the now in-focus image
     controlsHelp(); // spawns information about controls
   }
-
-
 
 });
