@@ -69,6 +69,8 @@ $(document).ready(function() {
     img.addClass("innerimage");
     img.appendTo("#pic_container").hide().fadeIn(200);
 
+    $(String("#picnr" + picNumber)).draggable(); // makes picture dragable
+    
     lastSpawned = (picNumber - 1); //adds last picture to lastSpawned variable for blurring or removing.
 
     $(String("#picnr" + lastSpawned)).css("filter", "grayscale(100)"); // blurs image below this image
@@ -76,6 +78,7 @@ $(document).ready(function() {
     picCount++;
     controlsHelp();
     mobileChanges();
+
   }
 
   // hides image currently in focus
@@ -91,5 +94,7 @@ $(document).ready(function() {
     $(String("#picnr" + (lastSpawned + 1))).css("filter", "grayscale(0)"); // unblurs the now in-focus image
     controlsHelp(); // spawns information about controls
   }
+
+
 
 });
