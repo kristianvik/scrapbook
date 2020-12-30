@@ -3,7 +3,6 @@ const el = document.querySelector("#pic_container");
 
 var picCount = 1; // number for selecting the right picture file, as all pictures are named x.jpg
 var lastSpawned; // for finding the id of the last picture shown, used for removing or blurring.
-var scrollCount;
 
 controlsHelp(); // spawns information about controls
 
@@ -15,11 +14,11 @@ function callToRemove() {
   removeImage(lastSpawned);
 }
 
-// checks if screen has width of less than 900px, which would mean user is on mobile device
+// checks if screen has width of less than 900px, which would mean user is on mobile
 var screenWidth = window.matchMedia("(max-width: 900px)");
 screenWidth.addListener(mobileChanges());
 
-// does nescessary changes for mobile screen-dimensions
+// makes nescessary changes for mobile screen-dimensions
 function mobileChanges() {
   if (screenWidth.matches) {
     $(".innerimage").css("max-width", "75%");
@@ -49,7 +48,7 @@ document.onkeydown = function(e) {
 // displays the controls for using the site when no image is showing
 function controlsHelp() {
   if (picCount <= 1) {
-    $("#pic_container").html('<p id="instructions">scroll or use the arrow keys to show and hide images</p>');
+    $("#pic_container").html('<p id="instructions">use the arrow keys to show and hide images</p>');
     $("#instructions").css("margin", "15% 0%");
   } else {
     $("#instructions").html('');
@@ -80,7 +79,7 @@ function spawnImage(picNumber) {
   img.attr('src', String("images/" + picNumber + ".jpg"));
   img.css("margin", String(randomMT + "% " + randomMR + "% " + randomMB + "% " + randomML + "% "));
   img.addClass("innerimage");
-  img.appendTo("#pic_container");
+  img.appendTo("#pic_container").hide().fadeIn(200);
 
   lastSpawned = (picNumber - 1); //adds last picture to lastSpawned variable for blurring or removing.
   blurlast();
@@ -91,13 +90,14 @@ function spawnImage(picNumber) {
 
 // hides image currently in focus
 function removeImage(picNumber) {
-  $(String("#picnr" + (lastSpawned + 1))).remove();
+  $(String("#picnr" + (lastSpawned + 1))).fadeOut(200, function(){
+    $(this).remove();
+  });
 
   if (picCount > 1) { // prevents picCount and lastSpawned values from going below 0.
     picCount--;
     lastSpawned--;
   }
-
   unblurWhenRemove();
   controlsHelp(); // spawns information about controls
 }
