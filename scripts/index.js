@@ -1,4 +1,3 @@
-//jshint esversion:6
 
 $(document).ready(function() {
 
@@ -22,14 +21,10 @@ $(document).ready(function() {
   document.onkeydown = function(e) {
     switch (e.keyCode) {
       case 37:
-        removeImage(lastSpawned);
-        break;
       case 38:
         removeImage(lastSpawned);
         break;
       case 39:
-        spawnImage(picCount);
-        break;
       case 40:
         spawnImage(picCount);
         break;
@@ -53,11 +48,11 @@ $(document).ready(function() {
     // creates random numbers for positioning of the image within the parent div.
 
     if (screenWidth.matches) { // if on mobile
-      let randomT = (Math.random() * 60); // pictures spawns all the way down the screen and not only at the top
-      let randomL = (Math.random() * 10);
+      var randomT = (Math.random() * 60); // pictures spawns all the way down the screen and not only at the top
+      var randomL = (Math.random() * 10);
     } else {
-      let randomT = (Math.random() * 25);
-      let randomL = (Math.random() * 58);
+      var randomT = (Math.random() * 25);
+      var randomL = (Math.random() * 58);
     }
 
     // creates image
