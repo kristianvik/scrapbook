@@ -1,0 +1,22 @@
+{
+  "name": "scrapbook",
+  "version": "1.0.0",
+  "description": "Personal site for creating moodboards, or something.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kristianvik/scrapbook.git"
+  },
+  "author": "Kristian A. Vik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kristianvik/scrapbook/issues"
+  },
+  "homepage": "https://github.com/kristianvik/scrapbook#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
