@@ -51,8 +51,8 @@ $(document).ready(function() {
       var randomT = (Math.random() * 60); // pictures spawns all the way down the screen and not only at the top
       var randomL = (Math.random() * 10);
     } else {
-      var randomT = (Math.random() * 25);
-      var randomL = (Math.random() * 58);
+      var randomT = (Math.random() * 40);
+      var randomL = (Math.random() * 70);
     }
 
     // creates image
