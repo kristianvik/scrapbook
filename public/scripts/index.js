@@ -1,7 +1,7 @@
 //jshint esversion:6
 $(document).ready(function() {
-  const express = require("express");
-  const app = express();
+  //const express = require("express");
+  //const app = express();
 
   var picCount = 1; // number for selecting the right picture file, as all pictures are named x.jpg
   var lastSpawned; // for finding the id of the last picture shown, used for removing or blurring.
@@ -54,7 +54,7 @@ $(document).ready(function() {
       var randomL = (Math.random() * 10);
     } else {
       var randomT = (Math.random() * 40);
-      var randomL = (Math.random() * 70);
+      var randomL = (Math.random() * 65);
     }
 
     // creates image

@@ -3,13 +3,13 @@ $(document).ready(function() {
   const express = require("express");
   const app = express();
 
-  var picCount = 1; // number for selecting the right picture file, as all pictures are named x.jpg
-  var lastSpawned; // for finding the id of the last picture shown, used for removing or blurring.
+  let picCount = 1; // number for selecting the right picture file, as all pictures are named x.jpg
+  let lastSpawned; // for finding the id of the last picture shown, used for removing or blurring.
 
   controlsHelp(); // spawns information about controls
 
   // checks if screen has width of less than 900px, which would mean user is on mobile
-  var screenWidth = window.matchMedia("(max-width: 900px)");
+  let screenWidth = window.matchMedia("(max-width: 900px)");
   screenWidth.addListener(mobileChanges());
 
   // makes nescessary changes for mobile screen-dimensions
@@ -50,11 +50,11 @@ $(document).ready(function() {
     // creates random numbers for positioning of the image within the parent div.
 
     if (screenWidth.matches) { // if on mobile
-      var randomT = (Math.random() * 60); // pictures spawns all the way down the screen and not only at the top
-      var randomL = (Math.random() * 10);
+      let randomT = (Math.random() * 60); // pictures spawns all the way down the screen and not only at the top
+      let randomL = (Math.random() * 10);
     } else {
-      var randomT = (Math.random() * 40);
-      var randomL = (Math.random() * 70);
+      let randomT = (Math.random() * 40);
+      let randomL = (Math.random() * 70);
     }
 
     // creates image
