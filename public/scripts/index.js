@@ -57,7 +57,7 @@ $(document).ready(function() {
 
     // creates image
     var img = $(String("<img id=" + "picnr" + picNumber + ">"));
-    img.attr('src', String("../images/" + picNumber + ".jpg"));
+    img.attr('src', String("./images/" + picNumber + ".jpg"));
     img.css("left", String(randomL + "%"));
     img.css("top", String(randomT + "%"));
     img.addClass("innerimage");
