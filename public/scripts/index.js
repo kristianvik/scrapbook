@@ -1,15 +1,13 @@
 //jshint esversion:6
 $(document).ready(function() {
-  //const express = require("express");
-  //const app = express();
 
-  var picCount = 1; // number for selecting the right picture file, as all pictures are named x.jpg
-  var lastSpawned; // for finding the id of the last picture shown, used for removing or blurring.
+  let picCount = 1; // number for selecting the right picture file, as all pictures are named x.jpg
+  let lastSpawned; // for finding the id of the last picture shown, used for removing or blurring.
 
   controlsHelp(); // spawns information about controls
 
   // checks if screen has width of less than 900px, which would mean user is on mobile
-  var screenWidth = window.matchMedia("(max-width: 900px)");
+  let screenWidth = window.matchMedia("(max-width: 900px)");
   screenWidth.addListener(mobileChanges());
 
   // makes nescessary changes for mobile screen-dimensions
@@ -54,12 +52,12 @@ $(document).ready(function() {
       var randomL = (Math.random() * 10);
     } else {
       var randomT = (Math.random() * 40);
-      var randomL = (Math.random() * 65);
+      var randomL = (Math.random() * 70);
     }
 
     // creates image
     var img = $(String("<img id=" + "picnr" + picNumber + ">"));
-    img.attr('src', String("images/" + picNumber + ".jpg"));
+    img.attr('src', String("../images/" + picNumber + ".jpg"));
     img.css("left", String(randomL + "%"));
     img.css("top", String(randomT + "%"));
     img.addClass("innerimage");
