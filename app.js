@@ -6,6 +6,7 @@ const port = 3000
 app.use('/styles', express.static('public/styles'));
 app.use('/scripts', express.static('public/scripts'));
 app.use('/images', express.static('public/images'));
+app.use('/scripts', express.static(__dirname + '/node_modules/requirejs'));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/index.html'));
@@ -19,3 +20,4 @@ app.get('/create', (req, res) => {
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`)
 })
+

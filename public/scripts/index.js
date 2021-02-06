@@ -17,7 +17,7 @@ $(document).ready(function() {
     }
   }
 
-  // control feed with arrow-keys
+  // control feed with arrow-keys, no scrolling event listener yet (so mobile does not work yet)
   document.onkeydown = function(e) {
     switch (e.keyCode) {
       case 37:
