@@ -161,7 +161,7 @@ $(document).ready(function() {
     lastCategory = '#fashionBtn';
   });
 
-  let lastSpawned; // for finding the id of the last picture shown, used for removing or blurring.
+  let lastSpawned = 0; // for finding the id of the last picture shown, used for removing or blurring.
   let imgIndex = 0; // for finding image in img-array.
 
   // checks if screen has width of less than 900px, which would mean user is on mobile
@@ -223,6 +223,7 @@ $(document).ready(function() {
       console.log("spawner fra art imgs");
     } else if (category === 'cars'){
       img.attr('src', String("./images/" + carImgs[imgIndex].link));
+      console.log(carImgs[imgIndex].link);
       console.log("spawner fra car imgs");
     } else if (category === 'fashion'){
       img.attr('src', String("./images/" + fashionImgs[imgIndex].link));
@@ -234,8 +235,7 @@ $(document).ready(function() {
       img.attr('src', String("./images/" + imgs[imgIndex].link));
       console.log("spawner fra alle bilder");
     }
-    
-    img.attr('src', String("./images/" + imgs[imgIndex].link));
+  
     img.css("left", String(randomL + "%"));
     img.css("top", String(randomT + "%"));
     img.addClass("innerimage");
