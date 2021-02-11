@@ -109,7 +109,6 @@ $(document).ready(function() {
   const carImgs = imgs.filter((img) => img.category === 'cars');
   const fashionImgs = imgs.filter((img) => img.category === 'fashion');
   const archImgs = imgs.filter((img) => img.category === 'architecture');
-  console.log(artImgs, carImgs, fashionImgs, archImgs);
 
   // category choice:
   let category = "all";
@@ -123,6 +122,7 @@ $(document).ready(function() {
       $(lastCategory).removeClass("active");
     }
     lastCategory = '#allBtn';
+    removeAllImages();
   });
 
   $('#carsBtn').click(function(){ // cars
@@ -132,6 +132,7 @@ $(document).ready(function() {
       $(lastCategory).removeClass("active");
     }
     lastCategory = '#carsBtn';
+    removeAllImages();
   });
 
   $('#archBtn').click(function(){ // architecture and furniture
@@ -141,6 +142,7 @@ $(document).ready(function() {
       $(lastCategory).removeClass("active");
     }
     lastCategory = '#archBtn';
+    removeAllImages();
   });
 
   $('#artBtn').click(function(){ // art
@@ -150,6 +152,7 @@ $(document).ready(function() {
       $(lastCategory).removeClass("active");
     }
     lastCategory = '#artBtn';
+    removeAllImages();
   });
 
   $('#fashionBtn').click(function(){ // fashion
@@ -159,6 +162,7 @@ $(document).ready(function() {
       $(lastCategory).removeClass("active");
     }
     lastCategory = '#fashionBtn';
+    removeAllImages();
   });
 
   let lastSpawned = 0; // for finding the id of the last picture shown, used for removing or blurring.
@@ -220,20 +224,14 @@ $(document).ready(function() {
 
     if (category === 'art'){
       img.attr('src', String("./images/" + artImgs[imgIndex].link));
-      console.log("spawner fra art imgs");
     } else if (category === 'cars'){
       img.attr('src', String("./images/" + carImgs[imgIndex].link));
-      console.log(carImgs[imgIndex].link);
-      console.log("spawner fra car imgs");
     } else if (category === 'fashion'){
       img.attr('src', String("./images/" + fashionImgs[imgIndex].link));
-      console.log("spawner fra fashion imgs");
     } else if (category === 'arch'){
       img.attr('src', String("./images/" + archImgs[imgIndex].link));
-      console.log("spawner fra arch imgs");
     } else {
       img.attr('src', String("./images/" + imgs[imgIndex].link));
-      console.log("spawner fra alle bilder");
     }
   
     img.css("left", String(randomL + "%"));
@@ -246,7 +244,6 @@ $(document).ready(function() {
     }
 
     lastSpawned = (imgIndex - 1); //adds last picture to lastSpawned variable for blurring or removing.
-    console.log("lastSpawned =" + lastSpawned);
     $(String("#picnr" + lastSpawned)).css("filter", "grayscale(100)"); // blurs image below this image
 
     imgIndex++;
@@ -265,7 +262,18 @@ $(document).ready(function() {
       lastSpawned--;
     }
     $(String("#picnr" + (lastSpawned + 1))).css("filter", "grayscale(0)"); // unblurs the now in-focus image
-    controlsHelp(); // spawns information about controls
+    controlsHelp(); // spawner info om kontroller
+  }
+
+  function removeAllImages() {
+    let i;
+    for (i = 0; i < imgIndex; i++){
+      console.log("Jeg skal egentlig kjøre sånn her mange ganger");
+      $(String(`#picnr${i}`)).remove();
+    }
+    imgIndex = 0;
+    lastSpawned = 0;
+    controlsHelp();
   }
 
 });
