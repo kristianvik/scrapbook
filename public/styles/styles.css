@@ -60,6 +60,7 @@ p{
   margin: 0;
   text-decoration: none;
   font-size: 20;
+  cursor: pointer;
 }
 
 .catNavbar a:hover {

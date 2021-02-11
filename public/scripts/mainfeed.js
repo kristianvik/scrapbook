@@ -105,23 +105,13 @@ $(document).ready(function() {
   ];
 
   // new arrays filtered by category:
-  let carImgs = imgs.filter(function(obj) { // cars
-    return (obj.category === 'cars');
-  });
+  const artImgs = imgs.filter((img) => img.category === 'art');
+  const carImgs = imgs.filter((img) => img.category === 'cars');
+  const fashionImgs = imgs.filter((img) => img.category === 'fashion');
+  const archImgs = imgs.filter((img) => img.category === 'architecture');
+  console.log(artImgs, carImgs, fashionImgs, archImgs);
 
-  let artImgs = imgs.filter(function(obj) { // art
-    return (obj.category === 'art');
-  });
-
-  let archImgs = imgs.filter(function(obj) { // architecture and furniture design
-    return (obj.category === 'arch');
-  });
-
-  let fashionImgs = imgs.filter(function(obj) { // fashion 
-    return (obj.category === 'fashion');
-  });
-
-  // recognize category choice:
+  // category choice:
   let category = "all";
   let lastCategory = "#allBtn";
 
@@ -172,9 +162,7 @@ $(document).ready(function() {
   });
 
   let lastSpawned; // for finding the id of the last picture shown, used for removing or blurring.
-  let picCount;
-
-  controlsHelp(); // spawns information about controls
+  let imgIndex = 0; // for finding image in img-array.
 
   // checks if screen has width of less than 900px, which would mean user is on mobile
   let screenWidth = window.matchMedia("(max-width: 900px)");
@@ -196,15 +184,16 @@ $(document).ready(function() {
         break;
       case 39:
       case 40:
-        spawnImage(picCount);
+        spawnImage();
         break;
     }
   };
 
+  controlsHelp(); // spawns information about controls
 
   // displays the controls for using the site when no image is showing
   function controlsHelp() {
-    if (picCount <= 1) {
+    if (imgIndex <= 1) {
       $('#pic_container').html('<p id="instructions">use the arrow keys to show and hide images</p>');
       $('#instructions').css("margin", "15% 0%");
     } else {
@@ -213,14 +202,10 @@ $(document).ready(function() {
     }
   }
 
-
-  // image index:
-  let imgIndex = 0;
-
   // shows next image
-  function spawnImage(picNumber) {
+  function spawnImage() {
     
-    // creates random numbers for positioning of the image within the parent div.
+    // creates random numbers for positioning of the image within the parent div (picContainer).
 
     if (screenWidth.matches) { // if on mobile
       var randomT = (Math.random() * 50); // pictures spawns all the way down the screen and not only at the top
@@ -231,8 +216,24 @@ $(document).ready(function() {
     }
 
     // creates image
+    var img = $(String("<img id=" + "picnr" + imgIndex + ">"));
 
-    var img = $(String("<img id=" + "picnr" + picNumber + ">"));
+    if (category === 'art'){
+      img.attr('src', String("./images/" + artImgs[imgIndex].link));
+      console.log("spawner fra art imgs");
+    } else if (category === 'cars'){
+      img.attr('src', String("./images/" + carImgs[imgIndex].link));
+      console.log("spawner fra car imgs");
+    } else if (category === 'fashion'){
+      img.attr('src', String("./images/" + fashionImgs[imgIndex].link));
+      console.log("spawner fra fashion imgs");
+    } else if (category === 'arch'){
+      img.attr('src', String("./images/" + archImgs[imgIndex].link));
+      console.log("spawner fra arch imgs");
+    } else {
+      img.attr('src', String("./images/" + imgs[imgIndex].link));
+      console.log("spawner fra alle bilder");
+    }
     
     img.attr('src', String("./images/" + imgs[imgIndex].link));
     img.css("left", String(randomL + "%"));
@@ -240,28 +241,27 @@ $(document).ready(function() {
     img.addClass("innerimage");
     img.appendTo('#pic_container').hide().fadeIn(200);
 
-
     if (!screenWidth.matches) {
-      $(String("#picnr" + picNumber)).draggable(); // makes picture draggable when not on mobile
+      $(String("#picnr" + imgIndex)).draggable(); // makes picture draggable when not on mobile
     }
 
-    lastSpawned = (picNumber - 1); //adds last picture to lastSpawned variable for blurring or removing.
-
+    lastSpawned = (imgIndex - 1); //adds last picture to lastSpawned variable for blurring or removing.
+    console.log("lastSpawned =" + lastSpawned);
     $(String("#picnr" + lastSpawned)).css("filter", "grayscale(100)"); // blurs image below this image
 
-    picCount++;
+    imgIndex++;
     controlsHelp();
     mobileChanges();
   }
 
   // hides image currently in focus
-  function removeImage(picNumber) {
+  function removeImage() {
     $(String("#picnr" + (lastSpawned + 1))).fadeOut(200, function() {
       $(this).remove();
     });
 
-    if (picCount > 1) { // prevents picCount and lastSpawned values from going below 0.
-      picCount--;
+    if (imgIndex > 1) { // prevents picCount and lastSpawned values from going below 0.
+      imgIndex--;
       lastSpawned--;
     }
     $(String("#picnr" + (lastSpawned + 1))).css("filter", "grayscale(0)"); // unblurs the now in-focus image
