@@ -79,6 +79,10 @@ $(document).ready(function() {
         'category': 'cars'
       },
       {
+        'link': 'image-removebg-preview (1).png',
+        'category': 'fashion'
+      },
+      {
         'link': '20.jpg',
         'category': 'cars'
       },
@@ -99,9 +103,86 @@ $(document).ready(function() {
         'category': 'cars'
       },
       {
-        'link': '25.jpg',
+        'link': 'JBaskiat-title.jpg',
+        'category': 'art'
+      },
+      {
+        'link': 's-l1600-e1591895474540.jpg',
+        'category': 'art'
+      },
+      {
+        'link': 'b1cd2863a0d1e7f1499d93075c623d76.jpg',
+        'category': 'art'
+      },
+      {
+        'link': 'headblowupbig.jpg',
+        'category': 'art'
+      },
+      {
+        'link': 'EreOEXyXIAE0BYl.jpg',
         'category': 'fashion'
       },
+      {
+        'link': 'image-removebg-preview (5).png',
+        'category': 'fashion'
+      },
+      {
+        'link': 'hode.png',
+        'category': 'art'
+      },
+      {
+        'link': 'sofa.png',
+        'category': 'architecture'
+      },
+      {
+        'link': 'chillern.png',
+        'category': 'cars'
+      },
+      {
+        'link': 'porsche.png',
+        'category': 'cars'
+      },
+      {
+        'link': 'virgil-abloh-paris-landmarks-louis-vuitton-fall-winter-collection-architecture_dezeen_2364_col_0-852x1226.jpg',
+        'category': 'fashion'
+      },
+      {
+        'link': 'IMG_7710.jpg',
+        'category': 'architecture'
+      },
+      {
+        'link': 'image-removebg-preview.png',
+        'category': 'fashion'
+      },
+      {
+        'link': 'u4jv02gq36d11.png',
+        'category': 'art'
+      },
+      {
+        'link': '133534-7.jpg',
+        'category': 'art'
+      },
+      {
+        'link': 'Screenshot 2021-02-11 at 14.27.34.png',
+        'category': 'fashion'
+      },
+      {
+        'link': 'Screenshot 2021-02-11 at 14.49.30.png',
+        'category': 'fashion'
+      },
+      {
+        'link': 'Screenshot 2021-02-11 at 14.51.17.png',
+        'category': 'fashion'
+      },
+      {
+        'link': 'Screenshot_2021-02-11_at_14.46.30-removebg-preview-removebg-preview.png',
+        'category': 'fashion'
+      },
+      {
+        'link': 'image-removebg-preview (3).png',
+        'category': 'fashion'
+      }
+      
   ];
 
   // new arrays filtered by category:
