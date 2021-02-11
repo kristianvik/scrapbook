@@ -247,7 +247,7 @@ $(document).ready(function() {
   });
 
   let lastSpawned = 0; // for finding the id of the last picture shown, used for removing or blurring.
-  let imgIndex = 0; // for finding image in img-array.
+  let imgIndex = 1; // for finding image in img-array.
 
   // checks if screen has width of less than 900px, which would mean user is on mobile
   let screenWidth = window.matchMedia("(max-width: 900px)");
@@ -291,7 +291,6 @@ $(document).ready(function() {
   function spawnImage() {
     
     // creates random numbers for positioning of the image within the parent div (picContainer).
-
     if (screenWidth.matches) { // if on mobile
       var randomT = (Math.random() * 50); // pictures spawns all the way down the screen and not only at the top
       var randomL = (Math.random() * 30);
@@ -352,7 +351,7 @@ $(document).ready(function() {
       console.log("Jeg skal egentlig kjøre sånn her mange ganger");
       $(String(`#picnr${i}`)).remove();
     }
-    imgIndex = 0;
+    imgIndex = 1;
     lastSpawned = 0;
     controlsHelp();
   }
