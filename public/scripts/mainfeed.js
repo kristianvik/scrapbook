@@ -337,7 +337,7 @@ $(document).ready(function() {
       $(this).remove();
     });
 
-    if (imgIndex > 1) { // prevents picCount and lastSpawned values from going below 0.
+    if (imgIndex > 1) { // prevents imgIndex and lastSpawned values from going below 0.
       imgIndex--;
       lastSpawned--;
     }
@@ -348,7 +348,6 @@ $(document).ready(function() {
   function removeAllImages() {
     let i;
     for (i = 0; i < imgIndex; i++){
-      console.log("Jeg skal egentlig kjøre sånn her mange ganger");
       $(String(`#picnr${i}`)).remove();
     }
     imgIndex = 1;
