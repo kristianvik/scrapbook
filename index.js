@@ -194,6 +194,10 @@ $(document).ready(function() {
     // category choice:
     let category = "all";
     let lastCategory = "#allBtn";
+
+    $('.pictures').click(function(){
+        spawnImage();
+    });
   
     //event listeners for category buttons:
     $('#allBtn').click(function(){ // all
@@ -274,6 +278,8 @@ $(document).ready(function() {
           break;
       }
     };
+
+
   
     controlsHelp(); // spawns information about controls
   
@@ -281,7 +287,7 @@ $(document).ready(function() {
     function controlsHelp() {
       if (imgIndex <= 1) {
         if (screenWidth.matches){
-          $('#pic_container').html('<p id="instructions">scroll up and down to show and hide images</p>');
+          $('#pic_container').html('<p id="instructions">tap to show images</p>');
         $('#instructions').css("margin", "15% 0%");
         } else {
           $('#pic_container').html('<p id="instructions">use the arrow keys to show and hide images</p>');
