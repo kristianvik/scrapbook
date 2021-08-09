@@ -1,0 +1,177 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #EDEDED;
+    height: 100%;
+    width: 100%;
+    font-family: 'Playfair Display', serif;
+  }
+  
+  
+  /* navbar */
+  
+  .navbar {
+    background-color: #EDEDED;
+    overflow: hidden;
+    font-size: 20px;
+    padding-top: 5px;
+  }
+
+  .create {
+      color: lightgrey;
+  }
+  
+  p{
+    font-size: 20px;
+  }
+  
+  #txAddPics {
+    font-size: 20px;
+    font-style: italic;
+  }
+  
+  .navbar a {
+    float: left;
+    color: black;
+    text-align: left;
+    padding: 14px 16px;
+    margin: 0;
+    text-decoration: none;
+    font-size: 20;
+  }
+  
+  .navbar a.active {
+    font-weight: bold;
+  }
+  
+  .navbar a:hover {
+    text-decoration: underline;
+  }
+  
+  .catNavbar {
+    background-color: #EDEDED;
+    overflow: hidden;
+    font-size: 18px;
+    padding-top: 0px;
+    font-style: italic;
+  }
+  
+  .catNavbar a {
+    float: left;
+    color: black;
+    text-align: left;
+    padding: 0px 16px;
+    margin: 0;
+    text-decoration: none;
+    font-size: 20;
+    cursor: pointer;
+  }
+  
+  .catNavbar a:hover {
+    text-decoration: underline;
+  }
+  
+  .catNavbar a.active {
+    font-weight: bold;
+  }
+  
+  
+  
+  /* picture section */
+  
+  #pic_container {
+    padding: 0% 5%;
+    flex: 1;
+    position: absolute;
+    width: 90%;
+    height: 90%;
+  }
+  
+  .innerimage {
+    max-width: 35%;
+    max-height: 50%;
+    position: absolute;
+    cursor: move;
+  }
+  
+  #instructions {
+    text-align: center;
+    font-style: italic;
+  }
+  
+  /* admin page  */
+  
+  .admin {
+    margin-top: 15%;
+    text-align: center;
+  }
+  
+  /* create page  */
+  
+  .create .upload {
+    text-align: center;
+    margin-top: 15%;
+  }
+  
+  /* mobile device changes */
+  
+  @media only screen and (max-width: 900px) {
+    .innerimage {
+      max-width: 80%;
+      max-height: 80%;
+      position: fixed;
+      cursor: default;
+    }
+  
+    .navbar {
+      background-color: #EDEDED;
+      overflow: hidden;
+      font-size: 40px;
+      padding-top: 5px;
+      display: flex;
+      justify-content: center;
+    }
+  
+    .catNavbar {
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+    }
+  
+    .navbar a {
+      float: left;
+      color: black;
+      text-align: left;
+      padding: 14px 35px;
+      margin: 0;
+      text-decoration: none;
+    }
+  
+    #instructions {
+      font-style: italic;
+      text-align: center;
+      font-size: 50px;
+    }
+  
+    #txAddPics {
+      font-size: 35px;
+      font-style: italic;
+    }
+  
+  }
+  
+  /* Create page */
+  
+  .uploadButton{
+    left: 50%;
+    border-radius: 20px;
+    border-color: #888888;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background-color: white;
+    
+  }
