@@ -49,6 +49,7 @@ body {
   }
   
   .catNavbar {
+    margin-top: 8px;
     background-color: #EDEDED;
     overflow: hidden;
     font-size: 18px;
